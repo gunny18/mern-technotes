@@ -8,6 +8,7 @@ import { corsOptions } from "./config/corsOptions.js";
 import cors from "cors";
 import { connectDB } from "./config/dbConnection.js";
 import mongoose from "mongoose";
+import { router as userRouter } from "./routes/userRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT || 3500;
@@ -19,9 +20,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  res.json("Success");
-});
+app.use("/users", userRouter);
 
 app.use(errorHandler);
 
