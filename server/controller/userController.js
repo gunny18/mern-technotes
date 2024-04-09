@@ -28,7 +28,7 @@ export const createNewUser = async (req, res, next) => {
     const createdUser = { username, password: hashedPassword, roles };
     const user = await User.create(createdUser);
     if (user) {
-      return res.status(200).json({ message: `New user ${username} created` });
+      return res.status(201).json({ message: `New user ${username} created` });
     } else {
       res.status(400).json({ message: "Invalid User data received" });
     }

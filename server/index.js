@@ -9,6 +9,7 @@ import cors from "cors";
 import { connectDB } from "./config/dbConnection.js";
 import mongoose from "mongoose";
 import { router as userRouter } from "./routes/userRoutes.js";
+import { router as noteRouter } from "./routes/noteRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT || 3500;
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/users", userRouter);
+app.use("/notes", noteRouter);
 
 app.use(errorHandler);
 
